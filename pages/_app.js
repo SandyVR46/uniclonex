@@ -1,9 +1,13 @@
-import '@/styles/globals.css'
+import '../styles/globals.css'
 
+
+// INTERNAL IMPORT
+import { NavBar } from '../Components/index';
 const MyApp = ({ Component, pageProps }) => (
   <div>
-    return <Component {...pageProps} />
+  <NavBar/>
+       <Component {...pageProps} />
   </div>
-)
+);
 
-export default MyApp
+export default MyApp;
