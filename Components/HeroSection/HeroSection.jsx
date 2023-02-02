@@ -63,7 +63,7 @@ const HeroSection = ({accounts, tokenData}) => {
               type="number"
               placeholder="0"
           />
-          <button onClick={() => setOpenToken(true)}>
+          <button onClick={() => setOpenTokensTwo(true)}>
           <Image
               src={tokenTwo.image || images.etherlogo}
               width={20}
@@ -101,7 +101,7 @@ const HeroSection = ({accounts, tokenData}) => {
         />
       )}
 
-      {openToken && (
+      {openTokensTwo && (
           <SearchToken
             openToken={setOpenTokensTwo}
             tokens={setTokenTwo}
