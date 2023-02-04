@@ -24,11 +24,7 @@ describe("SingleSwapToken", () => {
     dai = await ethers.getContractAt("IERC20", DAI);
     usdc = await ethers.getContractAt("IERC20", USDC);
 
-    // console.log(weth);
-    // console.log(dai);
-    // console.log(usdc);
-    // console.log(accounts)
-    // console.log(singleSwapToken);
+    
   });
   it("swapExactInputSingle", async () => {
     const amountIn = 10n ** 18n;
@@ -41,13 +37,23 @@ describe("SingleSwapToken", () => {
     // Swap
     await singleSwapToken.swapExactInputSingle(amountIn);
     console.log("DAI balance", await dai.balanceOf(accounts[0].address));
-    // console.log(weth);
-    // console.log(dai);
-    // console.log(usdc);
-    // console.log(accounts);
-    // console.log(singleSwapToken);
+    
   });
 
+  it("swapExactOutputSingle", async () => {
+    const wethAmountInMax = 10n ** 18n;
+    const daiAmountOut = 100n * 10n ** 18n;
 
+    //DEPOSIT WETH
+    await weth.deposit({ value: wethAmountInMax });
+    await weth.approve(singleSwapToken.address, wethAmountInMax);
+
+    //SWAP
+    await singleSwapToken.swapExactOutputSingle(daiAmountOut, wethAmountInMax);
+    console.log(accounts[0].address);
+    console.log(accounts[1].address);
+    console.log("Dai balance", await dai.balanceOf(accounts[0].address));
+    console.log("Dai balance", await dai.balanceOf(accounts[1].address));
+  });
 });
 
