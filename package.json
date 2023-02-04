@@ -10,9 +10,13 @@
   },
   "dependencies": {
     "@next/font": "13.1.2",
+    "@openzeppelin/contracts": "^4.8.1",
+    "@uniswap/v3-periphery": "^1.4.3",
+    "ether": "^0.0.9",
     "next": "13.1.2",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "web3modal": "^1.9.12"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^2.0.0",
