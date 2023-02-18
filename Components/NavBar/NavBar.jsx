@@ -6,10 +6,12 @@ import Link from "next/link";
 import Style from "./NavBar.module.css";
 import images from "../../assets";
 import { Model, TokenList } from "../index";
+import { SwapTokenContext } from "@/Context/SwapContext";
 
 
 
 const NavBar = () => {
+  const { ether, account, networkConnect, connectWallet, tokenData} = useContext(SwapTokenContext);
   const menuItems = [
     {
       name: "Swap",
@@ -27,7 +29,8 @@ const NavBar = () => {
   //USESTATE
   const [openModel, setOpenModel] = useState(false);
   const [openTokenBox, setOpenTokenBox] = useState(false);
-  const [account, setAccount] = useState(false);
+  console.log(tokenData);
+  // const [account, setAccount] = useState(false);
   return(
     <div className={Style.NavBar}>
       <div className={Style.NavBar_box}>
@@ -64,23 +67,25 @@ const NavBar = () => {
           <div className={Style.NavBar_box_right_box_img}>
             <Image src={images.ether} alt="NetWork" height={30} width={30} />
           </div>
-          <p>Network Name</p>
+          <p>{networkConnect}</p>
         </div>
         {account ? (
-            <button onClick={() => setOpenModel(true)}>Connect</button>
+            <button onClick={() => setOpenTokenBox(true)}>
+              {account.slice(0,20)}...
+            </button>
           ) : (
-            <button onClick={() => setOpenTokenBox(true)}>0xmdhdhdh...</button>
+            <button onClick={() => setOpenModel(true)}>Connect</button>
           )}
 
             {openModel && (
-            <Model setOpenModel={setOpenModel} connectWallet="Connect" />
+            <Model setOpenModel={setOpenModel} connectWallet={connectWallet} />
           )}
       </div>
       </div>
 
       {/* //TOKENLIST COMPONENT */}
       {openTokenBox && (
-        <TokenList tokenDate="hey" setOpenTokenBox={setOpenTokenBox} />
+        <TokenList tokenDate={tokenData} setOpenTokenBox={setOpenTokenBox} />
       )}
 
     </div>
