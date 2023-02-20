@@ -6,20 +6,20 @@ import swapMultiHop from "./SwapMultiHop.json";
 import IWETH from "./IWETH.json";
 
 //BOOTOKEN
-export const BooTokenAddress = "0x6533158b042775e2FdFeF3cA1a782EFDbB8EB9b1";
+export const BooTokenAddress = "0xe14058B1c3def306e2cb37535647A04De03Db092";
 export const BooTokenABI = booToken.abi;
 
 //LIFE TOken
-export const LifeTokenAddress = "0x73C68f1f41e4890D06Ba3e71b9E9DfA555f1fb46";
+export const LifeTokenAddress = "0x74ef2B06A1D2035C33244A4a263FF00B84504865";
 export const LifeTokenABI = lifeToken.abi;
 
 //SINGLE SWAP TOKEN
 export const SingleSwapTokenAddress =
-  "0xD2D5e508C82EFc205cAFA4Ad969a4395Babce026";
+  "0xF5b81Fe0B6F378f9E6A3fb6A6cD1921FCeA11799";
 export const SingleSwapTokenABI = singleSwapToken.abi;
 
 // SWAP MULTIHOP
-export const SwapMultiHopAddress = "0x2b639Cc84e1Ad3aA92D4Ee7d2755A6ABEf300D72";
+export const SwapMultiHopAddress = "0x67baFF31318638F497f4c4894Cd73918563942c8";
 export const SwapMultiHopABI = swapMultiHop.abi;
 
 
@@ -32,3 +32,9 @@ export const IWETHABI = IWETH.abi;
 // Life deployed to 0xAe9Ed85dE2670e3112590a2BB17b7283ddF44d9c
 // SingleSwapToken deployed to 0xD1760AA0FCD9e64bA4ea43399Ad789CFd63C7809
 // swapMultiHop deployed to 0x75b0B516B47A27b1819D21B26203Abf314d42CCE
+
+// After deploying again it changed to 
+// BOO deployed to 0xe14058B1c3def306e2cb37535647A04De03Db092
+// Life deployed to 0x74ef2B06A1D2035C33244A4a263FF00B84504865
+// SingleSwapToken deployed to 0xF5b81Fe0B6F378f9E6A3fb6A6cD1921FCeA11799
+// swapMultiHop deployed to 0x67baFF31318638F497f4c4894Cd73918563942c8

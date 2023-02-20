@@ -29,7 +29,7 @@ const NavBar = () => {
   //USESTATE
   const [openModel, setOpenModel] = useState(false);
   const [openTokenBox, setOpenTokenBox] = useState(false);
-  console.log(tokenData);
+
   // const [account, setAccount] = useState(false);
   return(
     <div className={Style.NavBar}>
