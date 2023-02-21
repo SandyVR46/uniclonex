@@ -59,7 +59,7 @@ const HeroSection = ({accounts, tokenData}) => {
               alt="ether"
             />
             {tokenOne.name || "ETH"}
-            <small>{ether}</small>
+            <small>{ether.slice(0,7)}</small>
           </button>
         </div>
 
@@ -76,7 +76,7 @@ const HeroSection = ({accounts, tokenData}) => {
               alt="ether"
             />
             {tokenTwo.name || "ETH"}
-            <small>{dai}</small>
+            <small>{dai.slice(0,7)}</small>
           </button>
         </div>
         
