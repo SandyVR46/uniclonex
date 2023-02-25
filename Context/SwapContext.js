@@ -29,8 +29,8 @@ export const SwapTokenContextProvider = ({ children }) => {
     const [tokenData, setTokenData] = useState([]);
 
     const addToken = [
-        "0xe14058B1c3def306e2cb37535647A04De03Db092",
-        "0x74ef2B06A1D2035C33244A4a263FF00B84504865",
+        "0x0b27a79cb9C0B38eE06Ca3d94DAA68e0Ed17F953",
+        "0x7bdd3b028C4796eF0EAf07d11394d0d9d8c24139",
     ];
 
     //FETCH DATA

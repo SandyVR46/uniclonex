@@ -6,7 +6,7 @@ import Style from "./TokenList.module.css";
 import images from "../../assets";
 
 const TokenList = ({ tokenDate, setOpenTokenBox }) => {
-  // const data = [1, 2, 3, 4, 5, 6, 7];
+  const data = [1, 2, 3, 4, 5, 6, 7];
   let tokenList = [];
   for (let i = 0; i < tokenDate.length; i++) {
     if (i % 2 == 1) tokenList.push(tokenDate[i]);
