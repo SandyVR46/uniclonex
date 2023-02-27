@@ -1,0 +1,57 @@
+.AllTokens_box{
+    margin-block: 1rem;
+    background-color: #1E1E1E;
+    border: 1px solid #d1f80b53;
+    border-radius: .5rem;
+}
+
+.AllTokens_box_header{
+    display: grid;
+    grid-template-columns: .5fr 4fr 2fr 2fr 2fr 2fr;
+    align-items: center;
+    padding: .5rem 1rem;
+    border-bottom: 1px solid #d1f80b53;
+}
+
+.AllTokens_box_header p{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.AllTokens_box_list{
+    display: grid;
+    grid-template-columns: .5fr 4fr 2fr 2fr 2fr 2fr;
+    padding: .5rem 1rem;
+    align-items: center;
+    margin-top: -.5rem;
+}
+
+.AllTokens_box_list_para{
+    font-size: 1.3rem;
+    display: flex;
+    gap: .5rem;
+    line-height: 0;
+    align-items: center;
+}
+
+@media only screen and (max-width: 35em) {
+
+    .AllTokens_box_list{
+        grid-template-columns: 3.5fr 1fr;
+    }
+    .hide{
+        display: none;
+    }
+    .AllTokens_box_header{
+        grid-template-columns: 3.5fr 1fr;
+    }
+
+    .AllTokens_box_header .hide{
+        display: none;
+    }
+
+    .AllTokens_box_list_para{
+        font-size: 1.1rem;
+    }
+}

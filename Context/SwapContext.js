@@ -29,8 +29,8 @@ export const SwapTokenContextProvider = ({ children }) => {
     const [tokenData, setTokenData] = useState([]);
 
     const addToken = [
-        "0x0b27a79cb9C0B38eE06Ca3d94DAA68e0Ed17F953",
-        "0x7bdd3b028C4796eF0EAf07d11394d0d9d8c24139",
+        "0xD2D5e508C82EFc205cAFA4Ad969a4395Babce026",
+        "0x2b639Cc84e1Ad3aA92D4Ee7d2755A6ABEf300D72",
     ];
 
     //FETCH DATA
@@ -96,9 +96,9 @@ export const SwapTokenContextProvider = ({ children }) => {
     };
 
     
-    useEffect(()=>{
-        fetchingData();
-    }, []);
+    // useEffect(()=>{
+    //     fetchingData();
+    // }, []);
 
     const singleSwapToken = async()=>{
         try{
