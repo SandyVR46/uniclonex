@@ -11,7 +11,7 @@ const Pool = () => {
     return (
         <div className={Style.Pool}>
             <PoolAdd />
-            {/* <PoolConnect /> */}
+            <PoolConnect />
 
         </div>
     );
