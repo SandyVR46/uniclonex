@@ -29,10 +29,10 @@ const TokenList = ({ tokenDate, setOpenTokenBox }) => {
          <div className={Style.TokenList_box}>
             <div className={Style.TokenList_box_info}>
             <p className={Style.TokenList_box_info_symbol}>
-              {el.name}
+              {el.symbol}
             </p>
             <p>
-              <span>{el.tokenBalance}</span>{el.symbol}
+              <span>{el.tokenBalance}</span>{el.name}
             </p>
             </div>
          </div>

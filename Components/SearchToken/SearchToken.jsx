@@ -8,49 +8,53 @@ import images from "../../assets";
 const SearchToken = ({openToken, tokens, tokenData}) => {
   //USESTATE
   const [active, setActive] = useState(1);
+  let tokenList = [];
+  for (let i = 0; i < tokenData.length; i++) {
+    if (i % 2 == 1) tokenList.push(tokenData[i]);
+  }
 
-  const coin = [
-      {
-        img: images.ether,
-        name: "ETH",
-      },
-      {
-        img: images.ether,
-        name: "DAI",
-      },
-      {
-        img: images.ether,
-        name: "DOG",
-      },
-      {
-        img: images.ether,
-        name: "FUN",
-      },
-      {
-        img: images.ether,
-        name: "WETH9",
-      },
-      {
-        img: images.ether,
-        name: "UNI",
-      },
-      {
-        img: images.ether,
-        name: "TIME",
-      },
-      {
-        img: images.ether,
-        name: "LOO",
-      },
-      {
-        img: images.ether,
-        name: "OOO",
-      },
-      {
-        img: images.ether,
-        name: "HEY  ",
-      },
-    ];
+  // const coin = [
+  //     {
+  //       img: images.ether,
+  //       name: "ETH",
+  //     },
+  //     {
+  //       img: images.ether,
+  //       name: "DAI",
+  //     },
+  //     {
+  //       img: images.ether,
+  //       name: "DOG",
+  //     },
+  //     {
+  //       img: images.ether,
+  //       name: "FUN",
+  //     },
+  //     {
+  //       img: images.ether,
+  //       name: "WETH9",
+  //     },
+  //     {
+  //       img: images.ether,
+  //       name: "UNI",
+  //     },
+  //     {
+  //       img: images.ether,
+  //       name: "TIME",
+  //     },
+  //     {
+  //       img: images.ether,
+  //       name: "LOO",
+  //     },
+  //     {
+  //       img: images.ether,
+  //       name: "OOO",
+  //     },
+  //     {
+  //       img: images.ether,
+  //       name: "HEY  ",
+  //     },
+  //   ];
   
   
   return (
@@ -75,12 +79,12 @@ const SearchToken = ({openToken, tokens, tokenData}) => {
       </div>
 
       <div className={Style.SearchToken_box_tokens}>
-        {coin.map((el, i)=>(
+        {tokenList.map((el, i)=>(
           <span
           key={i + 1}
           className={active == i + 1 ? `${Style.active}` : ""}
           onClick={()=>(
-            setActive(i + 1), tokens({name:el.name, image:el.img})
+            setActive(i + 1), tokens({name:el.name, image:el.img, symbol:el.symbol, tokenBalance:el.tokenBalance, tokenAddress: el})
           )}
           >
             <Image
@@ -89,7 +93,7 @@ const SearchToken = ({openToken, tokens, tokenData}) => {
                 width={30}
                 height={30}
               />
-              {el.name}
+              {el.symbol}
           </span>
           ))}
       </div>
