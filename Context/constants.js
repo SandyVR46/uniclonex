@@ -12,10 +12,10 @@ export const BooTokenABI = booToken.abi;
 //LIFE TOken
 export const LifeTokenAddress = "0x773330693cb7d5D233348E25809770A32483A940";
 export const LifeTokenABI = lifeToken.abi;
-
-//SINGLE SWAP TOKEN
+ 
+//SINGLE SWAP TOKEN 
 export const SingleSwapTokenAddress =
-  "0xB468647B04bF657C9ee2de65252037d781eABafD";
+  "0x47c05BCCA7d57c87083EB4e586007530eE4539e9";
 export const SingleSwapTokenABI = singleSwapToken.abi;
 
 // SWAP MULTIHOP
