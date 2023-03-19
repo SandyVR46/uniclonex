@@ -6,9 +6,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Rayyan is ERC20, Ownable {
 
-    constructor() ERC20('Rayyan','RAY') {}
-
-    function mint(address to, uint256 amount) public onlyOwner{
-        _mint(to, amount);
+    constructor() ERC20("Rayyan", "RAY"){
+        _mint(msg.sender, 800000 * 10 ** decimals());
     }
 } 

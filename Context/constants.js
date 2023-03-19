@@ -4,6 +4,7 @@ import lifeToken from "./LifeToken.json";
 import singleSwapToken from "./SingleSwapToken.json";
 import swapMultiHop from "./SwapMultiHop.json";
 import IWETH from "./IWETH.json";
+import userStorgeData from "./UserStorageData.json";
 
 //BOOTOKEN
 export const BooTokenAddress = "0x408F924BAEC71cC3968614Cb2c58E155A35e6890";
@@ -27,6 +28,10 @@ export const SwapMultiHopABI = swapMultiHop.abi;
 export const IWETHAddress = "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2";
 export const IWETHABI = IWETH.abi;
 
+//USER STORAGE DAta
+
+export const userStorageDataAddrss = "0x1f53E116c31F171e59f45f0752AEc5d1F5aA3714";
+export const userStorageDataABI = userStorgeData.abi;
 
 // BOO deployed to 0x15Ff10fCc8A1a50bFbE07847A22664801eA79E0f
 // Life deployed to 0xAe9Ed85dE2670e3112590a2BB17b7283ddF44d9c

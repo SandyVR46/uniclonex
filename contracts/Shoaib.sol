@@ -6,9 +6,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Shoaib is ERC20, Ownable {
 
-    constructor() ERC20('Shoaib','SHO') {}
-
-    function mint(address to, uint256 amount) public onlyOwner{
-        _mint(to, amount);
+    constructor() ERC20("Shoaib", "SHO"){
+        _mint(msg.sender, 600000 * 10 ** decimals());
     }
 } 

@@ -53,3 +53,51 @@
     padding: .5rem;
     border-radius: .5rem;
 }
+
+/* ///NEW CSS */
+
+
+.PoolConnect_box_liquidity_box{
+    border: 1px solid #CFF80B;
+     border-radius: .5rem;
+     padding: 1rem;
+     line-height: 0;
+ }
+ 
+ 
+ .PoolConnect_box_liquidity_list{
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     line-height: 0;
+ }
+ 
+ .mark{
+   background-color: #CFF80B;
+   color: #1E1E1E;
+   padding: .5rem;
+   border-radius: .5rem;
+ }
+ 
+ .paragraph{
+     font-size: 1.2rem;
+ }
+ 
+ .highlight{
+     background-color: #CFF80B;
+     border-radius: .5rem;
+     padding: 1rem .5rem;
+     color: #1E1E1E;
+ }
+ 
+ @media only screen and (max-width: 35em){
+     .hide{
+         display: none;
+     }
+     .PoolConnect_box_info{
+         line-height: 1;
+         width: 100%;
+         font-size: .8rem;
+     }
+ 
+ }

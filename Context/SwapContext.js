@@ -13,12 +13,19 @@ import {
     connectingWithSingleSwapToken,
     connectingWithIWTHToken,
     connectingWithDAIToken,
+    connectingWithUserStorageContract,
 } from "../Utils/appFeatures";
+
+
+import { getPrice } from "../Utils/fetchingPrice";
+import { swapUpdatePrice } from "../Utils/swapUpdatePrice";
+import {addLiquidityExternal} from "../Utils/addLiquidity";
+import {getLiquidityData} from "../Utils/checkLiquidity";
+import { connectingWithPoolContract } from "../Utils/deployPool";
 
 import { IWETHABI } from "./constants";
 import ERC20 from "./ERC20.json";
-import { getPrice } from "../Utils/fetchingPrice";
-import { swapUpdatePrice } from "../Utils/swapUpdatePrice";
+
 export const SwapTokenContext = React.createContext();
 
 export const SwapTokenContextProvider = ({ children }) => {
@@ -30,15 +37,12 @@ export const SwapTokenContextProvider = ({ children }) => {
     const [dai, setDai] = useState("");
 
     const [tokenData, setTokenData] = useState([]);
+    const [getAllLiquidity, setGetAllLiquidity] = useState([]);
 
     const addToken = [
-        "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-        "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-        "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-        "0xB8c77482e45F1F44dE1745F52C74426C631bDD52",
-        "0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0",
-        "0x6B175474E89094C44Da98b954EedeAC495271d0F",
-        "0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE",
+        "0x6e0a5725dD4071e46356bD974E13F35DbF9ef367",
+        "0xA9d0Fb5837f9c42c874e16da96094b14Af0e2784",
+        "0x6B21b3ae41f818Fc91e322b53f8D0773d31eCB75",
     ];
 
     //FETCH DATA
@@ -86,19 +90,21 @@ export const SwapTokenContextProvider = ({ children }) => {
                 });
             });
 
-            // WETH BALANCE
-            const wethContract = await connectingWithDAIToken();
-            const wethBal = await wethContract.balanceOf(userAccount);
-            const wethToken = BigNumber.from(wethBal).toString();
-            const convertwethTokenBal = ethers.utils.formatEther(wethToken);
-            setWeth9(convertwethTokenBal);
+            // //GET LIQUDITY
+            const userStorageData = await connectingWithUserStorageContract();
+            const userLiquidity = await userStorageData.getAllTransactions();
+            console.log(userLiquidity);
 
-            // DAI BALANCE
-            const daiContract = await connectingWithIWTHToken();
-            const daiBal = await daiContract.balanceOf(userAccount);
-            const daiToken = BigNumber.from(daiBal).toString();
-            const convertdaiTokenBal = ethers.utils.formatEther(daiToken);
-            setDai(convertdaiTokenBal);   
+            userLiquidity.map(async (el, i) => {
+                const liquidityData = await getLiquidityData(
+                  el.poolAddress,
+                  el.tokenAddress0,
+                  el.tokenAddress1
+                );
+        
+                getAllLiquidity.push(liquidityData);
+                console.log(getAllLiquidity);
+              });
         }   catch(error){
             console.log(error);
         }
@@ -108,6 +114,67 @@ export const SwapTokenContextProvider = ({ children }) => {
     useEffect(()=>{
         fetchingData();
     }, []);
+
+    //CREATE AND ADD LIQUIDITY
+    const createLiquidityAndPool = async ({
+        tokenAddress0,
+        tokenAddress1,
+        fee,
+        tokenPrice1,
+        tokenPrice2,
+        slippage,
+        deadline,
+        tokenAmmountOne,
+        tokenAmmountTwo,
+    }) => {
+      try {
+        console.log( tokenAddress0,
+            tokenAddress1,
+            fee,
+            tokenPrice1,
+            tokenPrice2,
+            slippage,
+            deadline,
+            tokenAmmountOne,
+            tokenAmmountTwo);
+        //CREATE POOL
+        const createPool = await connectingWithPoolContract(
+            tokenAddress0,
+            tokenAddress1,
+            fee,
+            tokenPrice1,
+            tokenPrice2,
+            {
+            gasLimit: 500000,
+            }
+        );
+
+        const poolAddress = createPool;
+        // console.log(poolAddress);
+
+        //CREATE LIQUIDITY
+        const info = await addLiquidityExternal(
+            tokenAddress0,
+            tokenAddress1,
+            poolAddress,
+            fee,
+            tokenAmmountOne,
+            tokenAmmountTwo
+        );
+        console.log(info);
+
+        //ADD DATA
+        const userStorageData = await connectingWithUserStorageContract();
+
+        const userLiqudity = await userStorageData.addToBlockchain(
+            poolAddress,
+            tokenAddress0,
+            tokenAddress1
+        );  
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
     // SINGL SWAP TOKEN
     const singleSwapToken = async({token1, token2, swapAmount}) => {
@@ -168,6 +235,8 @@ export const SwapTokenContextProvider = ({ children }) => {
             connectWallet, 
             getPrice,
             swapUpdatePrice,
+            createLiquidityAndPool,
+            getAllLiquidity,
             account, 
             weth9, 
             dai, 

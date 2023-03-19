@@ -202,11 +202,53 @@
     font-weight: 500;
 }
 
+/* //NEW CSS */
+
 .token{
     position: absolute;
-    top: 0rem;
-    right: 32rem;
+    background-color: #1E1E1E;
+    inset: 0 0 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #CFF80B;
+}
+
+.PoolAdd_box_price_right_range_box_para{
+    background-color: #CFF80B;
+    border: 0;
+    outline: 0;
+    width: 80%;
+    height: 2rem;
+    padding: .2rem 1rem;
+    border-radius: .5rem;
 }
 
 
+@media only screen and (max-width: 35em) {
+    .PoolAdd_box_price{
+        display: grid;
+        grid-template-columns: 1fr;
+}
+
+   .PoolAdd_box_price_left_token_info{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: #CFF80B;
+    border-radius: .5rem;
+    color: #1E1E1E;
+    padding: 0 .5rem;
+    font-weight: 700;
+   }
+
+   .token{
+    position: absolute;
+    background-color: #1E1E1E;
+    inset: 0% 0% 50% 0%;
+    display: flex;
+    border: 1px solid #CFF80B;
+}
+
+}
 
