@@ -8,6 +8,7 @@ var swapRouterAddress;
 var nftDescriptorAddress;
 var positionDescriptorAddress;
 var positionManagerAddress;
+
 // Uniswap contract address
 // wethAddress= "0x773330693cb7d5D233348E25809770A32483A940";
 // factoryAddress= "0x52173b6ac069619c206b9A0e75609fC92860AB2A";      
@@ -16,12 +17,12 @@ var positionManagerAddress;
 // positionDescriptorAddress= "0xdB012DD3E3345e2f8D23c0F3cbCb2D94f430Be8C";
 // positionManagerAddress= "0xd977422c9eE9B646f64A4C4389a6C98ad356d8C4";
 
-wethAddress= "0x52173b6ac069619c206b9A0e75609fC92860AB2A";
-factoryAddress= "0x40A633EeF249F21D95C8803b7144f19AAfeEF7ae";
-swapRouterAddress= "0x532802f2F9E0e3EE9d5Ba70C35E1F43C0498772D";
-nftDescriptorAddress= "0xdB012DD3E3345e2f8D23c0F3cbCb2D94f430Be8C";
-positionDescriptorAddress= "0xd977422c9eE9B646f64A4C4389a6C98ad356d8C4";
-positionManagerAddress= "0x1eB5C49630E08e95Ba7f139BcF4B9BA171C9a8C7";
+wethAddress= '0x89372b32b8AF3F1272e2efb3088616318D2834cA';
+factoryAddress= '0xB1c05b498Cb58568B2470369FEB98B00702063dA';
+swapRouterAddress= '0x92A00fc48Ad3dD4A8b5266a8F467a52Ac784fC83';
+nftDescriptorAddress= '0x2f8D338360D095a72680A943A22fE6a0d398a0B4';
+positionDescriptorAddress= '0x21915b79E1d334499272521a3508061354D13FF0';
+positionManagerAddress= '0x44863F234b137A395e5c98359d16057A9A1fAc55';
 
 const artifacts = {
     NonfungiblePositionManager: require("@uniswap/v3-periphery/artifacts/contracts/NonfungiblePositionManager.sol/NonfungiblePositionManager.json"),

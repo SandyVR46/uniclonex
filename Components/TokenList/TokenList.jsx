@@ -32,7 +32,7 @@ const TokenList = ({ tokenDate, setOpenTokenBox }) => {
               {el.symbol}
             </p>
             <p>
-              <span>{el.tokenBalance}</span>{el.name}
+              <span>{el.tokenBalance.slice(0,9)}</span>{el.name}
             </p>
             </div>
          </div>

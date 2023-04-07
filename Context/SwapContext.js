@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { ethers, BigNumber } from "ethers";
 import Web3Modal from "web3modal";
 import { Token, CurrencyAmount, TradeType, Percent } from "@uniswap/sdk-core";
+import axios from "axios";
 
 
 //INTERNAL IMPORT
@@ -38,11 +39,20 @@ export const SwapTokenContextProvider = ({ children }) => {
 
     const [tokenData, setTokenData] = useState([]);
     const [getAllLiquidity, setGetAllLiquidity] = useState([]);
+    // TOP TOKENS
+    const [topTokensList, setTopTokensList] = useState([]);
 
     const addToken = [
-        "0x6e0a5725dD4071e46356bD974E13F35DbF9ef367",
-        "0xA9d0Fb5837f9c42c874e16da96094b14Af0e2784",
-        "0x6B21b3ae41f818Fc91e322b53f8D0773d31eCB75",
+        "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+        "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+        "0xB8c77482e45F1F44dE1745F52C74426C631bDD52",
+        "0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0",
+        "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+        "0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE",
+        "0x6D712CB50297b97b79dE784d10F487C00d7f8c2C",
+        "0x04F339eC4D75Cf2833069e6e61b60eF56461CD7C",
+        "0x3de00f44ce68FC56DB0e0E33aD4015C6e78eCB39",
     ];
 
     //FETCH DATA
@@ -105,6 +115,33 @@ export const SwapTokenContextProvider = ({ children }) => {
                 getAllLiquidity.push(liquidityData);
                 console.log(getAllLiquidity);
               });
+
+              const URL = "https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3";
+
+              const query = `
+                {
+                    tokens(orderBy: volumeUSD, orderDirection: desc, first:20){
+                    id
+                    name
+                    symbol
+                    decimals
+                    volume
+                    volumeUSD
+                    totalSupply
+                    feesUSD
+                    txCount
+                    poolCount
+                    totalValueLockedUSD
+                    totalValueLocked
+                    derivedETH
+                    }
+                }
+                `;
+                const axiosData = await axios.post(URL, { query: query });
+                console.log(axiosData.data.data.tokens);
+                setTopTokensList(axiosData.data.data.tokens);
+
+
         }   catch(error){
             console.log(error);
         }
@@ -243,6 +280,7 @@ export const SwapTokenContextProvider = ({ children }) => {
             networkConnect, 
             ether, 
             tokenData,
+            topTokensList,
             }}>
           {children}
         </SwapTokenContext.Provider>

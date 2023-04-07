@@ -13,9 +13,9 @@ const AllTokens = ({ allTokenList }) => {
             <p className={Style.hide}>#</p>
             <p>Token name</p>
             <p>Price</p>
-            <p className={Style.hide}>Change</p>
+            <p className={Style.hide}>ValueLockedUSD</p>
             <p className={Style.hide}>
-              TVL{" "}
+              Tx Count{" "}
               <small>
                 <Image src={images.question} alt="img" width={15} height={15} />
               </small>{" "}
@@ -24,7 +24,7 @@ const AllTokens = ({ allTokenList }) => {
               <small>
                 <Image src={images.arrowPrice} alt="img" width={15} height={15} />
               </small>{" "}
-              Volume{" "}
+              Total Supply{" "}
               <small>
                 <Image src={images.question} alt="img" width={15} height={15} />
               </small>{" "}
@@ -33,7 +33,7 @@ const AllTokens = ({ allTokenList }) => {
   
           {allTokenList.map((el, i) => (
             <div className={Style.AllTokens_box_list}>
-              <p className={Style.hide}>{el.number}</p>
+              <p className={Style.hide}>{i + 1}</p>
               <p className={Style.AllTokens_box_list_para}>
                 <small>
                   <Image src={images.uniswap} alt="logo" width={25} height={25} />
@@ -41,10 +41,10 @@ const AllTokens = ({ allTokenList }) => {
                 <small>{el.name}</small>
                 <small>{el.symbol}</small>
               </p>
-              <p>{el.price}</p>
-              <p className={Style.hide}>{el.change}</p>
-              <p className={Style.hide}>{el.tvl}</p>
-              <p className={Style.hide}>{el.volume}</p>
+              <p>{el.volumeUSD.slice(0,9)}</p>
+              <p className={Style.hide}>{el.totalValueLockedUSD.slice(0, 9)}</p>
+              <p className={Style.hide}>{el.txCount.slice(0, 9)}</p>
+              <p className={Style.hide}>{el.totalSupply.slice(0, 9)}</p>
             </div>
           ))}
         </div>
